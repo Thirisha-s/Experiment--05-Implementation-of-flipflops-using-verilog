@@ -119,7 +119,7 @@ Developed by:s.thirisha
 RegisterNumber: 212222230160 
 ```
 i) SR FLIP FLOP:
-
+```
 module S(S,R,Clock,Q,Qbar);
 input S,R,Clock;
 output Q,Qbar;
@@ -129,9 +129,10 @@ nand (Y,R,Clock);
 nand (Q,X,Qbar);
 nand(Qbar,Y,Q);
 endmodule
+```
 
 ii) D FLIP FLOP:
-
+```
 module D(D,Clock,Q,Qbar);
 input D,Clock;
 output Q,Qbar;
@@ -142,9 +143,10 @@ nand (Y,Dbar,Clock);
 nand (Q,X,Qbar);
 nand (Qbar,Y,Q);
 endmodule
+```
 
 iii) JK FLIP FLOP:
-
+```
 module JK(J,K,Clock,Q,Qbar);
 input J,K,Clock;
 output Q,Qbar;
@@ -154,9 +156,9 @@ nand (S,K,Clock,Q);
 nand (Q,P,Qbar);
 nand (Qbar,S,Q);
 endmodule
-
+```
 iv) T FLIP FLOP:
-
+```
 module T (T,Clock,Q,Qbar);
 input T,Clock;
 output Q,Qbar;
