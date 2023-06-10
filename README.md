@@ -117,76 +117,89 @@ Q(t+1)=T′Q(t)+TQ(t)′
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
 Developed by:s.thirisha 
 RegisterNumber: 212222230160 
-```
 i) SR FLIP FLOP:
-```
-module S(S,R,Clock,Q,Qbar);
-input S,R,Clock;
-output Q,Qbar;
-wire X,Y;
-nand (X,S,Clock);
-nand (Y,R,Clock);
-nand (Q,X,Qbar);
-nand(Qbar,Y,Q);
-endmodule
-```
 
+module flipflop(S,R,clk,Q,Qbar);
+	input S,R,clk;
+	output reg Q;
+	output reg Qbar;
+	initial Q=0;
+	initial Qbar=1;
+	always @(posedge clk)
+	begin
+	Q=S|((~R)&Q);
+	Qbar=R|((~S)&(Qbar));
+	end
+	endmodule
 ii) D FLIP FLOP:
-```
-module D(D,Clock,Q,Qbar);
-input D,Clock;
-output Q,Qbar;
-assign Dbar = ~D;
-wire X,Y;
-nand (X,D,Clock);
-nand (Y,Dbar,Clock);
-nand (Q,X,Qbar);
-nand (Qbar,Y,Q);
-endmodule
-```
 
+module flipflop(D,clk,Q,Qbar);
+input D,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=D;
+Qbar=~D;
+end
+endmodule
 iii) JK FLIP FLOP:
-```
-module JK(J,K,Clock,Q,Qbar);
-input J,K,Clock;
-output Q,Qbar;
-wire P,S;
-nand (P,J,Clock,Qbar);
-nand (S,K,Clock,Q);
-nand (Q,P,Qbar);
-nand (Qbar,S,Q);
+
+module flipflop(J,K,clk,Q,Qbar);
+input J,K,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=(J&(~Q))|((~K)&Q);
+Qbar=~Q;
+end
 endmodule
-```
 iv) T FLIP FLOP:
-```
-module T (T,Clock,Q,Qbar);
-input T,Clock;
-output Q,Qbar;
-wire A,B;
-nand (A,T,Clock,Qbar);
-nand (B,T,Clock,Q);
-nand (Q,A,Qbar);
-nand (Qbar,B,Q);
+
+module flipflop(T,clk,Q,Qbar);
+input T,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=(T&(~Q))|((~T)&Q);
+Qbar=~Q;
+end
 endmodule
-```
+
+```![Uploading image.png…]()
+
 ### RTL LOGIC FOR FLIPFLOPS 
 ## SR FLIP FLOP:
-![image](https://github.com/Thirisha-s/Experiment--05-Implementation-of-flipflops-using-verilog/assets/120380280/f3170f86-a808-4a51-a363-15bae31da041)
+![image](https://github.com/Thirisha-s/Experiment--05-Implementation-of-flipflops-using-verilog/assets/120380280/ec395ba6-e7e7-4cab-836e-a327df273bc1)
+
 # D FLIP FLOP:
-![image](https://github.com/Thirisha-s/Experiment--05-Implementation-of-flipflops-using-verilog/assets/120380280/a591b60d-ce32-4f84-bff9-250b28fef793)
+![image](https://github.com/Thirisha-s/Experiment--05-Implementation-of-flipflops-using-verilog/assets/120380280/c9c8ae09-2bd1-4d3b-b9dc-9919f8709075)
+
 # JK FLIP FLOP:
-![image](https://github.com/Thirisha-s/Experiment--05-Implementation-of-flipflops-using-verilog/assets/120380280/9e196d48-bd35-4798-92ff-9c3f120a8a9a)
+![image](https://github.com/Thirisha-s/Experiment--05-Implementation-of-flipflops-using-verilog/assets/120380280/b8a5f71d-daf8-4390-b033-bebc9c9c36d4)
+
 # T FLIP FLOP:
-![image](https://github.com/Thirisha-s/Experiment--05-Implementation-of-flipflops-using-verilog/assets/120380280/897e7b12-349a-46ff-988a-a353162134c2)
+![image](https://github.com/Thirisha-s/Experiment--05-Implementation-of-flipflops-using-verilog/assets/120380280/23db1740-0098-4d68-95fe-11f0776e39b2)
+
 # TIMING DIGRAMS FOR FLIP FLOPS
 # SR FLIP FLOP:
-![image](https://github.com/Thirisha-s/Experiment--05-Implementation-of-flipflops-using-verilog/assets/120380280/83192cdc-184f-4f57-a08d-7cbbe6b5c7bf)
+![image](https://github.com/Thirisha-s/Experiment--05-Implementation-of-flipflops-using-verilog/assets/120380280/76f028e2-774d-413b-9cd8-14bf95428809)
+
 # D FLIP FLOP:
-![image](https://github.com/Thirisha-s/Experiment--05-Implementation-of-flipflops-using-verilog/assets/120380280/8adb2dac-6c29-47b6-a532-24171faeb851)
+![image](https://github.com/Thirisha-s/Experiment--05-Implementation-of-flipflops-using-verilog/assets/120380280/302347f9-b8cd-4f33-9d0c-8f304198ef9f)
+
 # JK FLIP FLOP:
-![image](https://github.com/Thirisha-s/Experiment--05-Implementation-of-flipflops-using-verilog/assets/120380280/7330ad02-1a0c-4293-b710-7a652bd36fee)
+![image](https://github.com/Thirisha-s/Experiment--05-Implementation-of-flipflops-using-verilog/assets/120380280/7ebc0326-7c65-4f0d-852b-f8ba10b1c583)
 # T FLIP FLOP:
-![image](https://github.com/Thirisha-s/Experiment--05-Implementation-of-flipflops-using-verilog/assets/120380280/5e899058-f0df-481a-9f68-69da1b07737b)
+![image](https://github.com/Thirisha-s/Experiment--05-Implementation-of-flipflops-using-verilog/assets/120380280/56d328ff-73b7-44ff-9630-b00df64ab703)
 
 ## RESULTS :
 All the flipflops are implementde using verilog and their functionality has been validated using their functional tables.
